@@ -14,3 +14,32 @@ c.MVVM - model view viewModel
 #### vue是如何利用mvvm写法统一和前端开发
 数据双向绑定
 a.利用花括号，构筑了数据与vm的绑定关系 => buildTemplate => build
+b.通过视图绑定事件，来处理数据 => v-model => :value @input => model
+```js
+    <a-component v-model="data1"></a-component>
+
+    // a-component
+    props: {
+        value: {
+            type: string,
+            default: ''
+        }
+    },
+    methods: {
+        handleChangeValue() {
+            this.$emit('input', dataSon)
+        }
+    }
+```
+buildTemplate => render()
+```jsx
+    <template>
+        <div class="data1">{{ data1 }}</div>
+    </template>
+
+    render() {
+        return (
+            <div class='data1'>{rhis.data1}</div>
+        )
+    }
+```
