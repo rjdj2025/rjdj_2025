@@ -39,7 +39,7 @@ buildTemplate => render()
 
     render() {
         return (
-            <div class='data1'>{rhis.data1}</div>
+            <div class='data1'>{this.data1}</div>
         )
     }
 ```
