@@ -8,3 +8,14 @@
 
 ## 提问：viewModel是什么
 回答：
+
+## 提问：vue生命周期
+回答：创建阶段：beforeCreate created beforeMount mounted 
+bc-创建vue实例 created-data props methods computed 数据操作 bm-vdom数据处理 m-dom 任何操作
+更新阶段：beforeUpdate updated
+bu-vdom,dom还是旧的
+u-dom已更改，谨慎改数据
+
+
+## 提问：vue3和vue2的区别
+回答：vue3增加了模式，支持,

@@ -42,4 +42,52 @@ buildTemplate => render()
             <div class='data1'>{this.data1}</div>
         )
     }
+
+    // v8 javascript设计模式 JavaScript语言精粹
+    // 红宝石 犀牛书（高级程序设计）
 ```
+
+#### 生命周期
+##### 面试题：vue生命周期
+创建阶段：beforecreate => created => beforemount => mounted
+
+bC: new Vue() - 实例创建阶段
+c: data | props | method | computed - 数据操作 => 不涉及vdom以及dom操作
+bM: vDOM - 数据操作都可以进行，不涉及dom
+m: DOM - 任何操作
+
+更新阶段：beforeUpdate => updated
+bU: vDom 完成更新 dom旧
+u:dom已经更新 => 谨慎修改数据
+
+销毁阶段：beforeDestroy => destroyed
+bD: 实例未被销毁 - 清空eventBus...
+d: 实例已经被销毁
+
+#### 指令 | 监听
+#### 条件
+v-if v-show
+v-else v-else-if
+
+#### 循环
+v-for
+=> for & if
+=> vue2.x v-for优先
+=> vue3.x v-if优先
+
+#### 其他
+v-model v-once v-text v-html v-bind v-on
+自定义指令
+```js
+    directives: {
+        zhaowa: {
+            update: function() {}
+        }
+    }
+```
+
+#### watch & computed
+基于依赖收集、数据劫持
+
+vue2.x
+vue3.x
