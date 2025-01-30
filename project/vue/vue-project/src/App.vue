@@ -2,7 +2,9 @@
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 // import Interview from './components/interview.vue'
-import Interview from './components/interview-vue2.vue'
+// import Interview from './components/interview-vue2.vue'
+// import Learnslot from './components/learnslot.vue'
+import Learnslot from './components/learnslot-demo.vue'
 </script>
 
 <template>
@@ -11,7 +13,9 @@ import Interview from './components/interview-vue2.vue'
 
     <div class="wrapper">
       <!-- <HelloWorld msg="You did it!" /> -->
-      <Interview />
+      <!-- <Interview /> -->
+      <Learnslot />
+      
     </div>
   </header>
 
