@@ -139,3 +139,63 @@ vue3.x
 * 2.合并策略：
     a.变量补充性，不论普通类型、引用类型 => 主体优先级更高
     b.生命周期mixin先行，主随后覆盖以主为主
+
+
+## vue源码
+核心竞争力
+业务
+
+感知到变化 ————> 数据劫持
+通知对方 ——————> 对方是谁，有多少对方 ————> 通知
+                        |                  |
+                        v                  v
+                        依赖收集 ——----->发布更新
+
+                  compiler
+            dom diff   指令、基建
+
+## 面试：观察者模式&发布订阅
+中心一对多 + 系统单点间灵活扩展
+
+不同点：
+观察者模式收集依赖主动推送 ——> 内部事件传递
+发布者挂载向整体频道发送消息 ——> 跨模块
+
+追问：
+如何利用这种方式去实现双向绑定
+                            mvvm    ————————————
+       数据监听               |                   |
+Object.defineProperty     Observer               |
+        Proxy                 |                  |
+                              |                  |
+     依赖主体                 Dep                 |
+                              |       绑定函数    |
+     连接双方的桥梁          watcher <——————————   |
+                                      订阅数据 |  |
+                                              |  v
+                             view <—————————— compiler
+
+
+
+
+数据绑定：<div>{{zhaowa}}</div>
+数据: zhaowa: {
+            teacher: 'yy',
+            course: 'vue'
+      }
+
+依赖主体发生变化：zhaowa.teacher = 'zz'
+
+
+用自己的语言组织
+
+src-core-index.ts 
+对vue做了一层封装 
+不允许更改vue配置 
+vue.util-完善挂载了vue核心工具和生态，warn、extend、mergeOptions、defineReactive,set delete nextTick
+
+
+
+
+
+
