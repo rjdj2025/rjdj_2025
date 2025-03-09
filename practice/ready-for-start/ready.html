@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>准备启航</title>
+    <!-- <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+    <style lang="scss">
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+        .hello-dream {
+            padding: 0;
+            margin: 0;
+            position: relative;
+            color: #DEB887;
+            text-shadow: 0 -2px #fff, 2px 0px #fff, 0 2px #fff, -2px 0 #fff, -2px -2px #fff, 2px 2px #fff, 2px -2px #fff, -2px 2px #fff;
+            width: 100%;
+            height: 100%;
+            background-color: #fffaf0;
+            font-size: 9vw;
+        }
+        button {
+            position: fixed;
+            right:40px;
+            bottom: 60px;
+        }
+        .hello-dream div {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: normal;
+            position: absolute;
+            padding-top: 25vh;
+            font-size: 0px;
+        }
+        .hello-dream div.animating-show {
+            animation-name: show;
+            animation-duration: 2s;
+            animation-iteration-count: 1;
+            font-size: 9vw; 
+        }
+        .hello-dream div.animating-hide {
+            animation-name: hide;
+            animation-duration: 0.1s;
+            animation-iteration-count: 1;
+            font-size: 0; 
+        }
+        /* 什么效果呢,只是字变化,还是整页变化 */
+        /* 效果一 打字效果 需要css和js一起使用*/
+        /* 先实现一个最简单的 */
+        @keyframes show {
+            from {font-size: 0px; }
+            to {font-size: 9vw;}
+        }
+        @keyframes hide {
+            from {font-size: 9vw; }
+            to {font-size: 0px; }
+        }
+        iframe {
+            position: fixed;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <div class="hello-dream">
+        <div class="get-ready" id="ready">
+            准备开始学习
+        </div>
+        <div class="fanqie" id="fanqie">
+            打开设置好番茄时钟
+        </div>
+        <div class="up" id="up">
+            坐直
+        </div>
+        <div class="bgm" id="bgm">
+            打开一段喜欢的音乐
+        </div>
+        <div class="close-eyes" id="close">
+            闭上眼睛10s
+        </div>
+        <div class="count-dowm" id="countDown">
+            <span>10</span>
+        </div>
+        <div class="now-start" id="start">
+            现在,开始吧
+        </div>
+        <div class="celebrate" id="celebrate">
+            庆祝一下今天一共学习了多长时间呢
+        </div>
+        <button type="button" class="btn btn-primary" id="btn" onclick="next()">下一步</button>
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="https://www.music.163.com/outchain/player?type=2&id=2625378825&auto=1&height=66"></iframe>
+    </div>
+
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js" integrity="sha384-/mhDoLbDldZc3qpsJHpLogda//BVZbgYuw6kof4u2FrCedxOtgRZDTHgHUhOCVim" crossorigin="anonymous"></script> -->
+    <script>
+        // 原生js
+        (function(){
+            // 立即执行函数
+            window.onload = function() {
+                console.log("加载完成");
+                let status = 1;
+                const showEle = document.getElementById("ready");
+                showEle.classList.add('animating-show');
+
+                const btn = document.getElementById("btn");
+
+                btn.onclick = function() {
+                    console.log(status);
+                    console.log('SUCCESS');
+                    
+                    function switchAnimate(oldEle, newEle, sta) {
+                        status = sta + 1;
+                        if(status == 7) {
+                            alert("太棒了");
+                        }
+                        if(status == 6) {
+                            btn.innerText = "完成";
+                        }
+                        document.getElementById(oldEle).classList.add('animating-hide');
+                        document.getElementById(newEle).classList.add('animating-show');
+
+                    }
+
+                    switch (status) {
+                        case 1: switchAnimate("ready","fanqie",status);break;
+                        case 2: switchAnimate("fanqie","up",status);break;
+                        case 3: switchAnimate("up","bgm",status);break;
+                        case 4: switchAnimate("bgm","close",status);break;
+                        case 5: switchAnimate("close","start",status);break;
+                        case 6: switchAnimate("start","finish",status);break;
+                    }
+                }
+                
+            }
+        }())
+    </script>
+</body>
+</html>
