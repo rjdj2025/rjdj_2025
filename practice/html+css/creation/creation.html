@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        body >div {
+            /* width: 100%;
+            height: 100%;
+            background: #fff5ee; */
+            visibility: hidden;
+        }
+        .picture1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+        }
+        .bg {
+            width: 40%;
+            height: auto;
+            margin: 50px auto;
+        }
+        span {
+            font-size: 14px;
+        }
+        .writing {
+            margin-top: 20px;
+            font-size: 20px;
+            width:0;
+            height:30px;
+            border-right: 1px solid #ffc0cb;
+            color: #ffc0cb;
+
+            animation: write 4s steps(14) forwards, blink 0.5s steps(1) infinite;
+            overflow: hidden; 
+        }
+
+        @keyframes write {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 310px;
+            }
+        }
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 想法太多
+         想留下这里
+    -->
+    <!-- 是谁,总有一堆屁话想说 -->
+    <!-- 呈现 -->
+          <!-- <h1>像留言一样</h1> -->
+          <!-- 打字机效果 -->
+          <h2 id="content"></h2>
+          <p id="content2"></p>
+          <span id="content3"></span>
+          <p class="writing" id="content4">愉悦地工作和学习,尽情地享受生活</p>
+
+          <a href="./picture1.html">点击进入</a>
+             
+    <!-- 首页 一个主题
+     技术层面 图片的展示和处理
+    -->
+    <div class="picture1">
+        <div class="bg">
+            <img src="./img/up.png" alt="" class="bg">
+        </div>
+    </div>
+    <!-- 第二帧  目录加特效
+         技术内容 页面结构布局
+    -->
+    <div class="picture2">
+
+    </div>
+
+    <!-- 第三帧 单项练习 引人入胜 -->
+    <div class="picture3">
+
+    </div>
+
+    <!-- 第四帧 整页布局练习 pc&移动 toB&toC-->
+    <div class="picture4">
+
+        <header>这里是header</header>
+    </div>
+
+    <div class="picture5"></div>
+
+    <script>
+        (function(){
+            // 打字机效果
+        /* 方法一: setTimeout 把展示的文本进行分割,使用定时器不断追加文字,同时使用::after伪类实现光标效果
+            这个是最简单的打字机效果
+        */
+            const container = document.getElementById('content');
+            const data = '在这里,'.split('')
+            console.log(data); //['在','这','里'......]
+            let index = 0;
+            function writing() {
+                if(index < data.length) {
+                    container.innerHTML += data[index++];
+                    let timer = setTimeout(writing,500);
+                }
+            }
+
+            writing();
+       
+    // 方法二: setInterval
+        const container2 = document.getElementById('content2');
+        const data2 = '你能看到人类驯服自己如何一点一点学会一项技术'.split('');
+        let index2 = 0;
+        let timer2 = null;
+        function writing2() {
+            if(index2 < data2.length) {
+                container2.innerHTML += data2[index2++];
+
+            } else {
+                clearInterval(timer2)
+            }
+        }
+        timer2 = setInterval(writing2, 200);
+
+        // 方法三: requestAnimationFrame
+        const container3 = document.getElementById('content3');
+        const data3 = '幸福安康,岁岁年年'.split('');
+        let index3 = 0;
+        function writing3() {
+            if(index3 < data3.length) {
+                container3.innerHTML += data3[index3++];
+                requestAnimationFrame(writing3);
+            }
+        }
+        writing3();
+        
+        // 方法四: css
+        // 方法五: 工具库 typed.js
+
+    }())
+
+    </script>
+</body>
+</html>
